@@ -1,0 +1,28 @@
+<!DOCTYPE RCC><RCC version="1.0">
+<qresource>
+ <file>weather-clear-night.png</file>
+ <file>weather-clear.png</file>
+ <file>weather-clouds-night.png</file>
+ <file>weather-clouds.png</file>
+ <file>weather-few-clouds-night.png</file>
+ <file>weather-few-clouds.png</file>
+ <file>weather-freezing-rain.png</file>
+ <file>weather-hail.png</file>
+ <file>weather-many-clouds.png</file>
+ <file>weather-mist.png</file>
+ <file>weather-none-available.png</file>
+ <file>weather-showers-day.png</file>
+ <file>weather-showers-night.png</file>
+ <file>weather-showers.png</file>
+ <file>weather-showers-scattered-day.png</file>
+ <file>weather-showers-scattered-night.png</file>
+ <file>weather-showers-scattered.png</file>
+ <file>weather-snow.png</file>
+ <file>weather-snow-rain.png</file>
+ <file>weather-snow-scattered-day.png</file>
+ <file>weather-snow-scattered-night.png</file>
+ <file>weather-snow-scattered.png</file>
+ <file>weather-storm.png</file>
+ <file>world.jpg</file>
+</qresource>
+</RCC>
