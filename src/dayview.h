@@ -28,14 +28,32 @@ class WeatherModel;
 class QComboBox;
 class QTextEdit;
 
+/**
+ * @short Displays the weather information for a single location and day.
+ *
+ * This view shows the weather information for a single location on a
+ * given day that can be choosen by the user.
+ */
 class DayView : public QWidget
 {
     Q_OBJECT
 
     public:
+        /**
+         * Creates a new day view.
+         *
+         * @param parent The parent widget.
+         */
         DayView(QWidget *parent = 0);
+
+        /**
+         * Destroys the day view.
+         */
         ~DayView();
 
+        /**
+         * Sets the weather @p model to use.
+         */
         void setModel(WeatherModel *model);
 
     private Q_SLOTS:

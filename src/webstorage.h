@@ -28,10 +28,10 @@
 #include <QtCore/QVector>
 
 /**
- * @short A static storage backend for weather information.
+ * @short A web storage backend for weather information.
  *
- * This class provides a static backend for weather information
- * that contains a set of predefined values for locations, temperatures etc.
+ * This class provides a backend for weather information
+ * that loads the data from a web server.
  */
 class WebStorage : public AbstractStorage
 {

@@ -26,12 +26,28 @@
 
 class WeatherModel;
 
+/**
+ * @short The main widget of the application.
+ *
+ * The main widget that provides the buttons to
+ * open the different weather information views
+ * and to quit the application.
+ */
 class MainWidget : public QWidget
 {
     Q_OBJECT
 
     public:
+        /**
+         * Creates the main widget.
+         *
+         * @param parent The parent widget.
+         */
         MainWidget(QWidget *parent = 0);
+
+        /**
+         * Destroys the main widget.
+         */
         ~MainWidget();
 
     private Q_SLOTS:
