@@ -23,12 +23,12 @@
 
 #include "weathermodel.h"
 #include "dayview.h"
+#include "tableview.h"
 #include "temperatureview.h"
 #include "worldview.h"
 
 #include <QtGui/QApplication>
 #include <QtGui/QPushButton>
-#include <QtGui/QTableView>
 #include <QtGui/QVBoxLayout>
 
 MainWidget::MainWidget(QWidget *parent)
@@ -67,9 +67,8 @@ MainWidget::~MainWidget()
 
 void MainWidget::showTableView()
 {
-    QTableView *view = new QTableView;
+    TableView *view = new TableView;
     view->setModel(mModel);
-    view->resize(685, 200);
     view->show();
 }
 
