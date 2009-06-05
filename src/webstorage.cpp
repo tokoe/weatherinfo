@@ -178,6 +178,11 @@ static WeatherSet fetchWeatherSet(const QString &id)
         coordinates["1450"] = QPointF(12.37, -1.52);
         coordinates["0498"] = QPointF(37.215, -93.298);
         coordinates["2253"] = QPointF(52.266, 104.333);
+        coordinates["0101"] = QPointF(42.149, -74.938);
+        coordinates["0080"] = QPointF(30.064, 31.249);
+        coordinates["6632"] = QPointF(-33.883, 151.216);
+        coordinates["0302"] = QPointF(-34.858, -56.170);
+        coordinates["0087"] = QPointF(35.685, 139.751);
     }
 
     if (coordinates.contains(id)) {
@@ -195,6 +200,11 @@ bool WebStorage::startStorage()
     mWeatherSets.append(fetchWeatherSet("1450"));
     mWeatherSets.append(fetchWeatherSet("0498"));
     mWeatherSets.append(fetchWeatherSet("2253"));
+    mWeatherSets.append(fetchWeatherSet("0101"));
+    mWeatherSets.append(fetchWeatherSet("0080"));
+    mWeatherSets.append(fetchWeatherSet("6632"));
+    mWeatherSets.append(fetchWeatherSet("0302"));
+    mWeatherSets.append(fetchWeatherSet("0087"));
 
     for (int i = 0; i < mWeatherSets.count(); ++i)
         emit weatherSetAdded(mWeatherSets.at(i));
