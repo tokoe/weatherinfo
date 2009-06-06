@@ -132,7 +132,7 @@ static QString nameForWindDirection(const WeatherSet::WindDirection direction)
 
 WeatherModel::WeatherModel()
 {
-    mStorage = new StaticStorage();
+    mStorage = new WebStorage();
 
     connect(mStorage, SIGNAL(weatherSetAdded(const WeatherSet&)), SLOT(weatherSetAdded(const WeatherSet&)));
     connect(mStorage, SIGNAL(weatherSetRemoved(const WeatherSet&)), SLOT(weatherSetRemoved(const WeatherSet&)));
@@ -224,6 +224,37 @@ QVariant WeatherModel::headerData(int section, Qt::Orientation orientation, int 
     }
 
     return QVariant();
+}
+
+Qt::ItemFlags WeatherModel::flags(const QModelIndex &index) const
+{
+    if (index.row() < 0 || index.row() >= mWeatherSets.count())
+        return Qt::NoItemFlags;
+
+    if (index.column() < 0 || index.column() >= 5)
+        return Qt::NoItemFlags;
+
+    return (Qt::ItemIsSelectable | Qt::ItemIsEditable | Qt::ItemIsEnabled);
+}
+
+bool WeatherModel::setData(const QModelIndex &index, const QVariant &value, int role)
+{
+    if (role != Qt::EditRole)
+        return false;
+
+    if (index.row() < 0 || index.row() >= mWeatherSets.count())
+        return false;
+
+    if (index.column() < 0 || index.column() >= 5)
+        return false;
+
+    WeatherSet::Temperatures temperatures = mWeatherSets.at(index.row()).temperatures();
+    temperatures[index.column()] = value.toInt();
+    mWeatherSets[index.row()].setTemperatures(temperatures);
+
+    emit dataChanged(index, index);
+
+    return true;
 }
 
 void WeatherModel::weatherSetAdded(const WeatherSet &set)

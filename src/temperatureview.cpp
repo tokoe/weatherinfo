@@ -50,6 +50,8 @@ void TemperatureView::setModel(WeatherModel *model)
 {
     mModel = model;
     connect(mModel, SIGNAL(layoutChanged()), SLOT(layoutChanged()));
+    connect(mModel, SIGNAL(dataChanged(const QModelIndex&, const QModelIndex&)),
+            SLOT(dataChanged(const QModelIndex&, const QModelIndex&)));
 
     layoutChanged();
 }
@@ -127,5 +129,10 @@ void TemperatureView::layoutChanged()
     for (int row = 0; row < mModel->rowCount(); ++row)
         mLocations->addItem(mModel->headerData(row, Qt::Vertical, Qt::DisplayRole).toString());
 
+    update();
+}
+
+void TemperatureView::dataChanged(const QModelIndex&, const QModelIndex&)
+{
     update();
 }

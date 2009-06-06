@@ -86,6 +86,16 @@ class WeatherModel : public QAbstractTableModel
          */
         virtual QVariant headerData(int section, Qt::Orientation orientation, int role = Qt::DisplayRole) const;
 
+        /**
+         * Returns the item flags for the given @p index.
+         */
+        virtual Qt::ItemFlags flags(const QModelIndex &index) const;
+
+        /**
+         * Sets the data for the given model @p index.
+         */
+        virtual bool setData(const QModelIndex &index, const QVariant &value, int role = Qt::EditRole);
+
     private Q_SLOTS:
         void weatherSetAdded(const WeatherSet&);
         void weatherSetRemoved(const WeatherSet&);

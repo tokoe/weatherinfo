@@ -28,6 +28,7 @@
 class WeatherModel;
 
 class QComboBox;
+class QModelIndex;
 
 /**
  * @short A temperature view for weather information.
@@ -68,6 +69,7 @@ class TemperatureView : public QWidget
 
     private Q_SLOTS:
         void layoutChanged();
+        void dataChanged(const QModelIndex&, const QModelIndex&);
 
     private:
         WeatherModel *mModel;

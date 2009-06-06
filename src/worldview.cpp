@@ -53,6 +53,8 @@ void WorldView::setModel(WeatherModel *model)
 {
     mModel = model;
     connect(mModel, SIGNAL(layoutChanged()), SLOT(layoutChanged()));
+    connect(mModel, SIGNAL(dataChanged(const QModelIndex&, const QModelIndex&)),
+            SLOT(dataChanged(const QModelIndex&, const QModelIndex&)));
 
     layoutChanged();
 }
@@ -100,5 +102,10 @@ void WorldView::layoutChanged()
     for (int column = 0; column < mModel->columnCount(); ++column)
         mWeekdays->addItem(mModel->headerData(column, Qt::Horizontal, Qt::DisplayRole).toString());
 
+    update();
+}
+
+void WorldView::dataChanged(const QModelIndex&, const QModelIndex&)
+{
     update();
 }

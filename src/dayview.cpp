@@ -62,6 +62,8 @@ void DayView::setModel(WeatherModel *model)
 {
     mModel = model;
     connect(mModel, SIGNAL(layoutChanged()), SLOT(layoutChanged()));
+    connect(mModel, SIGNAL(dataChanged(const QModelIndex&, const QModelIndex&)),
+            SLOT(dataChanged(const QModelIndex&, const QModelIndex&)));
 
     layoutChanged();
 }
@@ -70,6 +72,11 @@ void DayView::layoutChanged()
 {
     updateLocations();
     updateDays();
+    updateView();
+}
+
+void DayView::dataChanged(const QModelIndex&, const QModelIndex&)
+{
     updateView();
 }
 

@@ -26,6 +26,7 @@
 
 class WeatherModel;
 class QComboBox;
+class QModelIndex;
 class QTextEdit;
 
 /**
@@ -58,6 +59,7 @@ class DayView : public QWidget
 
     private Q_SLOTS:
         void layoutChanged();
+        void dataChanged(const QModelIndex&, const QModelIndex&);
         void updateView();
 
     private:
