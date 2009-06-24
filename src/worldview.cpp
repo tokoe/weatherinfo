@@ -31,6 +31,8 @@
 WorldView::WorldView(QWidget *parent)
     : QWidget(parent), mModel(0), mCurrentDay(0)
 {
+    setWindowTitle("World View");
+
     mMap = QImage(":world.jpg");
 
     QGridLayout *layout = new QGridLayout(this);

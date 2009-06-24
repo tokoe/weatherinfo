@@ -30,6 +30,8 @@
 TemperatureView::TemperatureView(QWidget *parent)
     : QWidget(parent), mModel(0), mCurrentLocation(0)
 {
+    setWindowTitle("Temperature View");
+
     QGridLayout *layout = new QGridLayout(this);
     mLocations = new QComboBox;
 

@@ -32,6 +32,8 @@
 DayView::DayView(QWidget *parent)
     : QWidget(parent), mModel(0)
 {
+    setWindowTitle("Day View");
+
     QGridLayout *layout = new QGridLayout(this);
 
     QLabel *label = new QLabel("Location:");

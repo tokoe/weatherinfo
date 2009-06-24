@@ -40,7 +40,7 @@ MainWidget::MainWidget(QWidget *parent)
 
     QPushButton *button = 0;
 
-    button = new QPushButton("Weather Table");
+    button = new QPushButton("Table View");
     layout->addWidget(button);
     connect(button, SIGNAL(clicked()), SLOT(showTableView()));
 
@@ -59,6 +59,8 @@ MainWidget::MainWidget(QWidget *parent)
     button = new QPushButton("Quit");
     layout->addWidget(button);
     connect(button, SIGNAL(clicked()), qApp, SLOT(quit()));
+
+    resize(250, 180);
 }
 
 MainWidget::~MainWidget()

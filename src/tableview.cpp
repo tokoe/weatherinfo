@@ -58,6 +58,8 @@ class LocationFilterProxy : public QSortFilterProxyModel
 TableView::TableView(QWidget *parent)
     : QWidget(parent), mModel(0)
 {
+    setWindowTitle("Table View");
+
     QGridLayout *layout = new QGridLayout(this);
 
     QLabel *label = new QLabel("Location:");
