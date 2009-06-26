@@ -1,0 +1,57 @@
+Analyse- Dokument Software Engineering 3
+
+Aufgabenstellung:
+
+-- weiss jemand, wo die liegt? im Praktikumsordner hab ich sie nicht gefunden... --
+
+Applikation f?r die Darstellung des Model-View-Control- Konzeptes:
+
+Als Beispielapplikation haben wir uns ein Wetterdatenprogramm ueberlegt, wobei die
+Wetterdaten fuer mehrere Tage und unterschiedliche Staedte in verschiedenen Arten
+angezeigt und in mindestens einer auch veraendert werden koennen.
+
+Analyse der Anforderungen:
+
+In unserem Model ist eine tabellenaehnliche Struktur fuer die Datenspeicherung und
+Datenverwaltung sinnvoll, da wir als Spalten die einzelnen Tage des zu beobachtenden
+Zeitraums und als Zeilen die einzelnen Staedte benutzen koennen. Als einen aus-
+reichenden Zeitraum erachten wir fuenf Tage, da die Wahrscheinlichkeit fuer eine
+korrekte Wettervorhersage fuer einen laengeren Zeitraum sehr gering ist.
+Als Datenquelle koennen wir zum einen einen Online- Wetterdienst benutzen und, fuer Testzwecke,
+statische Daten. Dazu sollte das Programm beim Start seinen Datenbestand aus der Onlinequelle
+aktualisieren.
+Folgende Daten sollten vom Model zur Verfuegung gestellt werden:
+	- Temperatur
+	- Windstaerke
+	- Windrichtung
+	- Bewoelkung
+
+Folgende Views sollen beispielhaft implementiert werden:
+
+	- Eine Tagesansicht einer einzelnen Stadt mit allen zur Verfuegung stehenden
+	Daten. Dabei sollte die Stadt und der angezeigte Tag ueber eine Auswahlbox
+	aenderbar sein. Voreingestellt sollte der aktuelle Tag und die im Model als erste
+	eingefuegte Stadt sein.
+
+	- Eine tabellarische Ansicht aller Staedte fuer alle Tage und die Anzeige von
+	Temperatur und Bewoelkung fuer die einzelnen Staedte. In dieser View soll eine
+	Aenderung des Temperatureintrages fuer einen beliebigen Tag und einer beliebigen
+	Stadt moeglich sein. Ebenso soll der Nutzer die angezeigten Staedte ueber einen Filter
+	einschraenken koennen. Die Aenderung der Temperatur soll direkt im Tabellenfeld erfolgen,
+	die Filterdefinition in einer Textbox im unteren Viewbereich. Als Filter soll eine
+	Namenseinschraenkung der Staedte dienen.
+
+	- Als weitere View soll eine Temperaturkurve fuer eine Stadt ueber den gesamten Zeit-
+	raum von fuenf Tagen angezeigt werden. Hier soll die Stadt durch den Nutzer mithilfe einer
+	Auswahlbox aenderbar sein.
+
+	- Als letzte View fuer unsere Beispielapplikation soll eine Weltkarte mit der Anzeige des
+	Bewoelkungszustandes aller Staedte fuer einen bestimmten Tag an den jeweiligen
+	Stadtkoordinaten implementiert werden. Hier soll der angezeigte Tag durch eine Auswahlbox
+	aenderbar sein. Standardmaessig ist der erste im Model vorhandene Tag darzustellen.
+
+Die Controller- Komponenten sind in unserer Beispielapplikation aufgrund des verwendeten Frameworks
+direkt mit in die Views integriert worden. Zum Beispiel wird die Funktionalitaet zum Andern der Temperatur
+im Tabellenview durch die Klasse QTableView beziehungsweise QItemDelegates bereitgestellt. Die geaenderten Daten
+werden vom View direkt in das Model geschrieben, welches durch ein dataChanged- Signal die anderen Views ueber
+die Aenderungen informiert.
