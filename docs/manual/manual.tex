@@ -1,10 +1,14 @@
-\documentclass[a4paper]{scrreprt}
-
+%% the main definitions for the report (KOMA-Script based)
+\documentclass[11pt,a4paper]{scrreprt}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[german,english]{babel}
+%\usepackage{layouts}
 \usepackage{graphicx}
 
 \begin{document}
-
-\title{Benutzerhandbuch f\"ur WeatherInfo}
+\selectlanguage{\german}
+\title{Benutzerhandbuch für WeatherInfo}
 \author{SE3 Team}
 \date{Juni 2009}
 
@@ -17,13 +21,13 @@ Das Programm WeatherInfo stellt Wetterinformationen, welche vom BBC-UK Weather F
 WebService geladen werden, graphisch dar und bietet dem Benutzer dabei verschiedene
 Ansichten an.
 
-\chapter{Die Benutzeroberfl\"ache}
-Die Benutzeroberfl\"ache des Programmes basiert auf dem C++-Toolkit Qt, damit ist
-es portabel und kann sowohl unter Linux, MacOSX und MS Windows ausgef\"uhrt werden.
+\chapter{Die Benutzeroberfläche}
+Die Benutzeroberfläche des Programmes basiert auf dem C++-Toolkit Qt, damit ist
+es portabel und kann sowohl unter Linux, MacOSX und MS Windows ausgeführt werden.
 
 \section{Das Hauptfenster}
 Nach dem Starten des Programmes wird dem Benutzer das Hauptfenster angezeigt,
-in welchem er zwischen den verschiedenen Ansichten w\"ahlen kann oder das
+in welchem er zwischen den verschiedenen Ansichten wählen kann oder das
 Programm beenden.
 
 \begin{center}
@@ -31,15 +35,15 @@ Programm beenden.
 \end{center}
 
 \section{Die Tabellenansicht}
-Die Tabellenansicht zeigt eine \"Ubersicht aller verf\"ugbaren Orte und das
-Wetter an diesen innerhalb der n\"achsten 5 Tage.
+Die Tabellenansicht zeigt eine Übersicht aller verfügbaren Orte und das
+Wetter an diesen innerhalb der nächsten 5 Tage.
 
 \begin{center}
 \includegraphics[width=14cm]{tableview.png}
 \end{center}
 
 Die Auswahl der angezeigten Orte kann vom Benutzer durch Eingabe eines
-Namenfilters eingeschr\"ankt werden.
+Namenfilters eingeschränkt werden.
 
 \begin{center}
 \includegraphics[width=14cm]{tableview_filtered.png}
@@ -47,19 +51,19 @@ Namenfilters eingeschr\"ankt werden.
 
 Die Temperatur eines Ortes an einem Tag kann durch einen Doppelclick auf
 die entsprechende Tabellenzelle und Eingabe des neuen Temperaturwertes
-ge\"andert werden.
+geändert werden.
 
 \section{Die Ortsansicht}
-Die Ortsansicht zeigt die Wetterinformationen f\"ur einen bestimmten Ort
-und Tag an. Der Benutzer kann Ort und Tag selbst ausw\"ahlen.
+Die Ortsansicht zeigt die Wetterinformationen für einen bestimmten Ort
+und Tag an. Der Benutzer kann Ort und Tag selbst auswählen.
 
 \begin{center}
 \includegraphics[width=14cm]{dayview.png}
 \end{center}
 
 \section{Die Temperaturansicht}
-Die Temperaturansicht zeigt den Temperaturverlauf der n\"achsten 5 Tage
-f\"ur einen bestimmten Ort an, welcher vom Benutzer selbst ausgew\"ahlt
+Die Temperaturansicht zeigt den Temperaturverlauf der nächsten 5 Tage
+für einen bestimmten Ort an, welcher vom Benutzer selbst ausgewählt
 werden kann.
 
 \begin{center}
@@ -67,9 +71,9 @@ werden kann.
 \end{center}
 
 \section{Die Weltansicht}
-Die Weltansicht zeigt die Wetterbedingungen f\"ur einen bestimmten Tag
-in allen verf\"ugbaren St\"adten an. Der Benutzer kann den Tag selbst
-ausw\"ahlen.
+Die Weltansicht zeigt die Wetterbedingungen für einen bestimmten Tag
+in allen verfügbaren Städten an. Der Benutzer kann den Tag selbst
+auswählen.
 
 \begin{center}
 \includegraphics[width=14cm]{worldview.png}
