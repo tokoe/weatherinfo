@@ -2,8 +2,9 @@ all:
 	pdflatex mvc.tex
 	pdflatex mvc.tex
 	pdflatex mvc.tex
-	
-	#3 times for correct toc generation!
+	# 3 times for correct toc generation!
 	
 clean:
+	# remove latex compile help files
 	rm -rf *.aux *.idx *.log *.toc
+	
