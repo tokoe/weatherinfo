@@ -1,13 +1,13 @@
 # ignoring hidden files (dotfiles)
-^\.
+.*
 
 # ignoring latex processing output files
 
-\.aux$
-\.idx$
-\.log$
-\.toc$
+*.aux
+*.idx
+*.log
+*.toc
 
 # ignoring backups 
-~$
+*~
 
