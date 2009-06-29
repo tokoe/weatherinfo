@@ -24,15 +24,15 @@ Gruppe von Studenten eine Belegarbeit zu einem gewählten Thema
 angefertigt werden. Im SS09 wählte unsere Gruppe das Thema
 {\bf Model-View-Controller-Konzept}.\\{\smallskip}
 
-Die Zielstellung ist ein Software-System zu entwickeln zur Simulation
+Die Zielstellung ist es, ein Software-System zu entwickeln zur Simulation
 des MVC-Konzeptes. Unsere Gruppe hat sich dazu entschieden, das Konzept
-mit Hilfe des {\itshape Model/View Programming Framework} von {\itshape Qt}
+anhand des {\itshape Model/View Programming Framework} von {\itshape Qt}
 zu erläutern.\\{\smallskip}
 
 Dieses Dokument beschreibt den allgemeinen Ansatz des 
 Model-View-Controller-Konzeptes und erörtert dazu, anhand der Gesichtspunkte
 eines Frameworks, die Umsetzung des Model-View-Controller Paradigma im
-Model/View~Programming~Framework.\\{\bigskip}
+Qt Model/View~Programming~Framework.\\{\bigskip}
 
 Die Gruppe besteht aus:
 \begin{itemize}
@@ -46,7 +46,7 @@ Die Gruppe besteht aus:
 \tableofcontents
 
 \chapter{Allgemeine Betrachtungen}
-In der Entwicklung von Software-Systemen haben sich (letztendlich) die Systeme durchgesetzt, 
+In der Entwicklung von Software-Systemen haben sich\footnote{letztendlich} die Systeme durchgesetzt, 
 welche mit Hilfe von graphischen Bedienoberflächen es dem Benutzer erlauben, das System
 bzw. eine Anwendung, interaktiv und nutzerfreundlich zu bedienen.\\
 
@@ -55,7 +55,7 @@ dabei geholfen, eine Anwendung zu verstehen und schneller und komfortabler damit
 
 An der Akzeptanz und Verbreitung von Computer-Systemen in nahezu allen Bereichen der Industrie
 und Wirtschaft, und in letzter Zeit auch immer mehr im privaten gesellschaftlichen Bereich, und
-der (sehr wahrscheinlichen) Annahme, dass die meisten Anwender nur über rudimentäre
+der Annahme, dass die meisten Anwender nur über rudimentäre
 Informatikkenntnisse verfügen, aber trotzdem in der Lage sind mit Hilfe der graphischen
 Benutzerschnittstelle die verschiedensten Aufgaben mit Software-Systemen einfach und effizient
 zu lösen, kann man erkennen, welchen Stellenwert dieser Bestandteil von interaktiven
@@ -113,14 +113,14 @@ Es besteht eigentlich aus 3 Entwurfsmustern die hier aber nur kurz erläutert we
 sollen.
 
 \subsection{Observer-Muster}
-Das wichtigste Muster beim MVC-Entwurf, auch für dessen Verständis, ist das Observer-Muster,
+Das wichtigste Muster beim MVC-Konzept, auch für dessen Verständis, ist das Observer-Muster,
 weshalb es hier jetzt genauer betrachtet wird.
 
 \begin{description}
-\item[Def.]
+\item[Zweck]
 Definiere eine 1-zu-n-Abhängigkeit, zwischen Objekten, so dass die Änderung des
 Zustands eines Objektes dazu führt, dass alle abhängigen Objekte benachrichtigt
-und automatisch aktualisiert werden.
+und automatisch aktualisiert werden. \citep[S. 287]{Riehle200407}
 \end{description}
 
 %% erzwinge das Anzeigen des Bildes genau an dieser Stelle
@@ -140,13 +140,21 @@ Model unterschiedliche, oder sogar mehrere Views auf einmal verwendet werden.
 \caption{Das Observer-Muster Klassendiagramm}
 \end{figure}
 
+Ein Beobachter registriert sich beim Subjekt\footnote{beim MVC die View, und evtl.
+auch der Controller, beim Model} und das Subjekt fügt es der Liste seiner Beobachter
+hinzu. Ändert sich der Zustand des Subjektes, benachrichtigt es alle registrierten
+Beobachter. Bei dem Benachrichtigungsvorgang wird vom Beobachter-Objekt die
+aktualisieren-Methode aufgerufen. In diese Methode ist festgelegt, welche Daten
+der Beobachter vom Subjekt benötigt und ruft diese über eine Schnittstelle beim
+Subjekt ab.
 
 \subsection{Strategy-Muster}
 \begin{description}
-\item[Def.]
+\item[Zweck]
 Definiere eine Familie von Algorithmen, kapsele jeden einzelnen und mache sie austauschbar.
 Das Strategy-Muster ermöglicht es, den Algorithmus unabhängig von ihn nutzenden Klienten
-zu variieren.
+zu variieren. \citep[S. 373]{Riehle200407}
+
 \end{description}
 
 Die View und der Controller implementieren das Strategy-Muster. Der Controller ist das
@@ -176,12 +184,16 @@ bis man beim Blattknoten angelangt ist. Sie verwendet dieses Muster intern, um d
 der Anzeige zu verwalten.
 
 \section{Nachteile von MVC}
+Bei der Anwendung des MVC-Konzeptes sollte man sich durchaus auch bewußt darüber sein,
+dass in bestimmten Fällen auch nachteilige Eigenschaften auftreten können, die nicht 
+außer Acht gelassen werden sollten. \citep[vgl. S. xx-xy]{Buschmann199801}
 
 \begin{description}
 \item[Größere Komplexität.]
 Nicht immer ist die strikte Einhaltung der Model-View-Controller-Struktur die beste Art, eine
 interaktive Anwendung zu entwickeln. Es kann sein das die Verwendung vom MVC die Komplexität
 der Anwendung erhöht ohne den Zugewinn an Flexibilität.
+
 
 \item[Potential für eine übermäßige Anzahl von Aktualisierungen.] Hat zum Beispiel eine
 einfache Aktion des Anwenders viele Aktualisierungen zur Folge, sollte das Model unnötige
@@ -196,6 +208,10 @@ verwendet wird.
 
 \chapter{Framework}
 \section{Ein kurzer Überblick}
+An dieser Stelle werden kurz die wesentlichen Eigenschaften eines Frameworks aufgeführt,
+um nachvollziehen zu können, unter welchen Aspekten das MVC-Muster angepasst wurde um es
+in das Qt-Framework zu integrieren.{\medskip}
+
 Ein Framework besteht aus einer Menge von zusammenarbeitenden Klassen, die einen
 wiederverwendbaren Entwurf für eine bestimmte Klasse von Software darstellen. Das
 Framework bestimmt die Architektur der Anwendung. Es definiert:
@@ -221,18 +237,79 @@ Auf der einen Seite schränkt dies die Kreativität ein, aber man erhält Kompon
 in denen Erfahrung steckt und die schon erprobt sind. Dem Benutzer der Anwendung sind
 diese Verhaltensweisen in der Regel schon bekannt.
 
-\chapter{Das Model/View Programming Framework von Qt}
+\chapter{Model/View Programmierung mit dem Framework von Qt}
 \section{Was ist Qt?}
 Qt ist das de facto Standard C++ Framework für ein sehr schnelles Entwickeln von
 Cross-Platform-Software. Zusätzlich zu einer sehr Umfangreichen C++ Klassenbibliothek
 enthält Qt Werkzeuge, die das Schreiben von Anwendungen erleichtern und
 beschleunigen.
 
-Qt enthält eine große Menge von Widgets, welche Standard GUI Funktionalität zur
+Qt enthält eine große Menge von Widgets, welche Standard GUI-Funktionalität zur
 Verfügung stellen. Qt ist ein weltweit verwendetes und ausgereiftes C++ Framework.
 
 Zu den vielen kommerziellen Verwendungen von Qt, ist die Open Source Edition
 von Qt die Grundlage von KDE, der Linux Desktop Umgebung.
+
+\section{Item Views}
+Qt`s Item-View-Widgets stellen Standard GUI-Bedienungselemnte zur Verfügung, für die
+Anzeige und Modifizierung großer Datenmengen. Das zugrundeliegende Model/View Framework
+entkoppelt die Art der Datenspeicherung von der Art ihrer Repräsentation dem Anwender
+gegenüber. Weitere Vorteile sind mehrfache Datennutzung, Sortierung und Filterung,
+mehrfache Views und Datenrepräsentationen auf den selben Daten.
+
+Wenn man Anwendungen schreibt, die große Mengen an Daten verarbeiten, werden die
+Entwickler Item-View-Widgets verwenden, um die Daten schnell und effizient anzuzeigen.
+Die Standard Item Views vieler moderner GUI-Frameworks enthalten Listen-Ansichten,
+Tree-Views mit hierarchisch angeordneten Listen und Table-Views, wie man sie 
+beispielsweise in Tabellenkalkulationen finden kann.
+
+Qt`s Item View Klassen gibt es in 2 verschiedenen Formen: als klassische Item-View-Widgets
+und als Model/View Komponenten. Klassische Item Views, wie {\itshape QListWidget}, 
+{\itshape QTableWidget} und {\itshape QTreeWidget}, sind eigenständige Views, welche Items
+verwalten, die explizit vom Entwickler angelegt werden.
+
+%% erzwinge das Anzeigen des Bildes genau an dieser Stelle
+\enlargethispage{1cm}
+\begin{figure}[h]
+%\fbox{\includegraphics[width=14cm]{qt-widgets.png}}
+\fbox{\includegraphics[width=14cm]{strategy-schema.png}}
+\caption{Die Standard Item Views von Qt für Trees, Listen und Tabellen}
+\end{figure}
+
+{\itshape QListView}, {\itshape QTableView} und {\itshape QTreeView} sind die äquivalenten
+Model/View Komponenten zu den klassischen Item Views. Diese Komponenten bieten eine
+einfache und saubere, Komponenten-orientierte Art die Datenmengen zu verwalten.
+
+\section{Qt`s Model/View Framework}
+Das Model/View Framework, welches von Qt bereitgestellt wird, ist eine Variante des
+Model-View-Controller-Konzeptes, welche speziell für Qt`s Item Views angepasst wurde.
+Dabei werden Models verwendet, um Daten anderen Komponenten zur Verfügung zu stellen,
+Views präsentieren sie dem Anwender und Delegates behandeln die Aspekte der
+Rendering- und Bearbeitungsprozesse.
+
+Models sind Wrapper um Datenquellen, welche konform zum Standardinterface sind, welches
+von {\itshape QAbstractItemModel} angeboten wird. Dieses Interface ermöglicht es Widgets,
+welche von {\itshape QAbstractItemView} abgeleitet wurden, auf Daten zuzugreifen, welche 
+über das Model zur Verfügung gestellt werden, ungeachtet welcher Natur\footnote{z.B.
+aus SQL-Datenbanken, XML-Daten, Textdateien, ...} die Original Datenquelle ist.
+Die Trennung zwischen den Daten und ihrer Darstellung, welche dieser Ansatz ermöglicht,
+bietet eine ganze Reihe von Vorteilen gegenüber den klassischen Item Views:
+\begin{itemize}
+\item Durch die Verwendung eines Standard-Interface für den Datenzugriff der Models,
+können diese separat von anderen Komponenten entwickelt und bei Bedarf ersetzt werden.
+\item Daten welche über Models erhalten werden, können zwischen mehreren Views geteilt werden.
+Dadurch wird es der Anwendung ermöglicht, mehrere Views der selben Daten anzubieten und diese
+kann so verschiedenste Darstellungsformen der Daten anbieten.
+\item Markierte Daten können zwischen den Views geteilt oder getrennt verwaltet werden, je
+nachdem was vom Anwender gewünscht wird.
+\item Für die Standard-Views List, Tree und Table, wird das meiste des Rendering Vorganges von
+Delegates ausgeführt. Das erleichtert das Anpassen der Views für die meisten Zwecke, ohne
+viel neuen Code zu schreiben.
+\item Durch die Verwendung von {\itshape Proxy Models} können Daten, die von Models angeboten
+werden, transformiert werden, bevor sie der View zur Verfügung gestellt werden. Dies ermöglicht
+es, Sortierung und Filterung der Anwendung hinzuzufügen, die zwischen mehreren Views verwendet
+werden kann.
+\end{itemize}
 
 \newpage
 \nocite{*}
