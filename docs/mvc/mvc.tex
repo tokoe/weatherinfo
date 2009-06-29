@@ -5,6 +5,7 @@
 \usepackage[german,english]{babel}
 %\usepackage{layouts}
 \usepackage{graphicx}
+ \usepackage[round]{natbib}
 
 \begin{document}
 
@@ -233,6 +234,10 @@ Verfügung stellen. Qt ist ein weltweit verwendetes und ausgereiftes C++ Framewo
 Zu den vielen kommerziellen Verwendungen von Qt, ist die Open Source Edition
 von Qt die Grundlage von KDE, der Linux Desktop Umgebung.
 
-
+\newpage
+\nocite{*}
+\addcontentsline{toc}{chapter}{Literaturverzeichnis}
+\bibliography{mvc-literatur}{}
+\bibliographystyle{plain}
 
 \end{document}
