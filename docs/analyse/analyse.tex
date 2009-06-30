@@ -1,0 +1,112 @@
+%% the main definitions for the report (KOMA-Script based)
+\documentclass[11pt,a4paper]{scrreprt}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[german,english]{babel}
+\usepackage{graphicx}
+
+\begin{document}
+\selectlanguage{\german}
+\title{{\Huge \bf MVC}\\[0.55em]{\LARGE WeatherInfo - Analysedokument}}
+\author{{\bf SE3 Team}\\Uwe Hausbrand}
+\date{Juni 2009}
+
+\maketitle
+
+\tableofcontents
+
+\chapter{Anforderungen an das Programm}
+
+Als Beispielapplikation haben wir uns ein Wetterdatenprogramm \"uberlegt, wobei die
+Wetterdaten f\"ur mehrere Tage und unterschiedlich St\"adte in verschiedenen Arten
+angezeigt und in mindestens einer auch ver\"andert werde k\"onnen.
+
+\section{Analyse der Anforderungen}
+
+\subsection{Das Model}
+In unserem Model ist eine tabellen\"ahnliche Struktur f\"ur die Datenspeicherung und
+Datenverwaltung sinnvoll, da wir als Spalten die einzelnen Tage des zu beobachtenden
+Zeitraums und als Zeilen die einzelnen St\"adte benutzen k\"onnen. Als einen ausreichenden
+Zeitraum erachten wir f\"unf Tage, da die Wahrscheinlichkeit f\"ur eine
+korrekte Wettervorhersage f\"ur einen l\"angeren Zeitraum sehr gering ist.
+Als Datenquelle k\"onnen wir zum einen einen Online-Wetterdienst benutzen oder, f\"ur Testzwecke,
+statische Daten. Dazu sollte das Programm beim Start seinen Datenbestand aus der Onlinequelle
+aktualisieren.
+
+Folgende Daten sollen vom Model zur Verf\"ugung gestellt werden:
+\begin{itemize}
+  \item Temperatur
+  \item Windst\"arke
+  \item Windrichtung
+  \item Bew\"olkung
+  \item Koordinaten (Latitude und Longitude)
+\end{itemize}
+
+\subsection{Die Views}
+Folgende Views sollen beispielhaft implementiert werden:
+\begin{itemize}
+  \item Eine tabellarische Ansicht aller St\"adte f\"ur alle Tage und die Anzeige von
+  Temperatur und Bew\"olkung f\"ur die einzelnen St\"adte. In dieser View soll eine
+  \"Anderung des Temperatureintrages f\"ur einen beliebigen Tag und einer beliebigen
+  Stadt m\"oglich sein. Ebenso soll der Nutzer die angezeigten St\"adte \"uber einen Filter
+  einschr\"anken k\"onnen. Die \"Anderung der Temperatur soll direkt im Tabellenfeld erfolgen,
+  die Filterdefinition in einer Textbox im unteren Viewbereich. Als Filter soll eine
+  Namenseinschr\"ankung der St\"adte dienen.
+
+  \item Eine Tagesansicht einer einzelnen Stadt mit allen zur Verf\"ugung stehenden
+  Daten. Dabei sollte die Stadt und der angezeigte Tag \"uber eine Auswahlbox
+  \"anderbar sein. Voreingestellt sollte der aktuelle Tag und die im Model als erste
+  eingef\"ugte Stadt sein.
+
+  \item Als weitere View soll eine Temperaturkurve f\"ur eine Stadt \"uber den gesamten Zeit-
+  raum von f\"unf Tagen angezeigt werden. Hier soll die Stadt durch den Nutzer mithilfe einer
+  Auswahlbox \"anderbar sein.
+
+  \item Als letzte View f\"ur unsere Beispielapplikation soll eine Weltkarte mit der Anzeige des
+  Bew\"olkungszustandes aller St\"adte f\"ur einen bestimmten Tag an den jeweiligen
+  Stadtkoordinaten implementiert werden. Hier soll der angezeigte Tag durch eine Auswahlbox
+  \"anderbar sein. Standardm\"a{\ss}ig ist der erste im Model vorhandene Tag darzustellen.
+\end{itemize}
+
+\subsection{Der Controller}
+Die Controller-Komponenten sind in unserer Beispielapplikation aufgrund des verwendeten Frameworks
+direkt mit in die Views integriert. Zum Beispiel wird die Funktionalit\"at zum \"Andern der Temperatur
+im Tabellenview durch die Klasse {\itshape QTableView} beziehungsweise {\itshape QItemDelegate} bereitgestellt.
+Die ge\"anderten Daten werden vom View direkt in das Model geschrieben, welches durch ein {\itshape dataChanged}-Signal
+die anderen Views \"uber die \"Anderungen informiert.
+
+\chapter{Analyse der Benutzeroberfl\"ache}
+Die Anforderungen der Benutzeroberfl\"ache haben wir durch eine Diskussion
+ermittelt und auf Papier f\"ur den Entwurfsprozess festgehalten.
+
+\section{Das Hauptfenster}
+
+\begin{center}
+\includegraphics[width=14cm]{mainwindow.png}
+\end{center}
+
+\section{Die Tabellenansicht}
+
+\begin{center}
+\includegraphics[width=14cm]{table_view.png}
+\end{center}
+
+\section{Die Ortsansicht}
+
+\begin{center}
+\includegraphics[width=14cm]{day_view.png}
+\end{center}
+
+\section{Die Temperaturansicht}
+
+\begin{center}
+\includegraphics[width=14cm]{temperature_view.png}
+\end{center}
+
+\section{Die Weltansicht}
+
+\begin{center}
+\includegraphics[width=14cm]{world_view.png}
+\end{center}
+
+\end{document}
