@@ -1,0 +1,41 @@
+\documentclass{beamer}
+
+\usenavigationsymbolstemplate{}
+
+\newcommand{\sectionframe}[1]
+{
+\section{#1}
+\begin{frame}
+    \vspace{1cm}
+    \begin{center}
+        \begin{LARGE}
+            #1
+        \end{LARGE}
+    \end{center}
+\end{frame}
+}
+
+\title{Model-View-Controller}
+
+\author{SE3 Team}
+\date{Juni 2009}
+
+\begin{document}
+
+\frame{\titlepage}
+
+\frame{\vspace{1cm}\tableofcontents}
+
+\sectionframe{Model-View-Controller}
+
+\include{mvc}
+
+\sectionframe{Analyse}
+
+\include{analyse}
+
+\sectionframe{Entwurf und Entwicklung}
+
+\include{design_development}
+
+\end{document}
