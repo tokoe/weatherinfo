@@ -5,7 +5,7 @@
 \usepackage[german,english]{babel}
 %\usepackage{layouts}
 \usepackage{graphicx}
- \usepackage[round]{natbib}
+\usepackage[round]{natbib}
 
 \begin{document}
 
@@ -48,13 +48,13 @@ Die Gruppe besteht aus:
 \chapter{Allgemeine Betrachtungen}
 In der Entwicklung von Software-Systemen haben sich\footnote{letztendlich} die Systeme durchgesetzt, 
 welche mit Hilfe von graphischen Bedienoberflächen es dem Benutzer erlauben, das System
-bzw. eine Anwendung, interaktiv und nutzerfreundlich zu bedienen.\\
+bzw. eine Anwendung interaktiv und nutzerfreundlich zu bedienen.
 
 Dem Benutzer wird dadurch ein einfacher Zugriff auf das Software-System ermöglicht und
 dabei geholfen, eine Anwendung zu verstehen und schneller und komfortabler damit zu arbeiten.
 
 An der Akzeptanz und Verbreitung von Computer-Systemen in nahezu allen Bereichen der Industrie
-und Wirtschaft, und in letzter Zeit auch immer mehr im privaten gesellschaftlichen Bereich, und
+und Wirtschaft und in letzter Zeit auch immer mehr im privaten gesellschaftlichen Bereich und
 der Annahme, dass die meisten Anwender nur über rudimentäre
 Informatikkenntnisse verfügen, aber trotzdem in der Lage sind mit Hilfe der graphischen
 Benutzerschnittstelle die verschiedensten Aufgaben mit Software-Systemen einfach und effizient
@@ -79,6 +79,7 @@ Das Model-View-Controller Muster teilt eine interaktive Anwendung in drei Kompon
 
 \begin{figure}[h]
 %\fbox{\includegraphics[width=14cm]{mvc-schema.png}}
+% from: http://en.wikibooks.org/wiki/LaTeX/Importing_Graphics
 %\includegraphics[trim = <trim from left> <from bottom> <from right> <from top>, clip, <other options>]{<image filename>}
 %\includegraphics[trim = 10mm 80mm 20mm 5mm, clip, width=3cm]{chick}
 \fbox{\includegraphics[trim = 0mm 207.7mm 28.6mm 0mm, clip, width=14cm]{mvc-schema.pdf}}
@@ -189,7 +190,7 @@ der Anzeige zu verwalten.
 \section{Nachteile von MVC}
 Bei der Anwendung des MVC-Konzeptes sollte man sich durchaus auch bewußt darüber sein,
 dass in bestimmten Fällen auch nachteilige Eigenschaften auftreten können, die nicht 
-außer Acht gelassen werden sollten. \citep[vgl. S. xx-xy]{Buschmann199801}
+außer Acht gelassen werden sollten. \citep[vgl. S. 142]{Buschmann199801}
 
 \begin{description}
 \item[Größere Komplexität.]
@@ -212,7 +213,7 @@ verwendet wird.
 \chapter{Framework}
 \section{Ein kurzer Überblick}
 An dieser Stelle werden kurz die wesentlichen Eigenschaften eines Frameworks aufgeführt,
-um nachvollziehen zu können, unter welchen Aspekten das MVC-Muster angepasst wurde um es
+um nachvollziehen zu können, unter welchen Aspekten das MVC-Muster angepasst wurde, um es
 in das Qt-Framework zu integrieren.{\medskip}
 
 Ein Framework besteht aus einer Menge von zusammenarbeitenden Klassen, die einen
@@ -250,7 +251,7 @@ beschleunigen.
 Qt enthält eine große Menge von Widgets, welche Standard GUI-Funktionalität zur
 Verfügung stellen. Qt ist ein weltweit verwendetes und ausgereiftes C++ Framework.
 
-Zu den vielen kommerziellen Verwendungen von Qt, ist die Open Source Edition
+Neben den vielen kommerziellen Verwendungen von Qt, ist die Open Source Edition
 von Qt die Grundlage von KDE, der Linux Desktop Umgebung.
 
 \section{Item Views}
@@ -275,14 +276,14 @@ verwalten, die explizit vom Entwickler angelegt werden.
 \enlargethispage{1cm}
 \begin{figure}[h]
 \fbox{\includegraphics[width=14cm]{qt-widgets.png}}
-\caption{Die Standard Item Views von Qt für Tree-, Listen- und Tabellenviews}
+\caption{Die Standard Item Views von Qt für Tree-, List- und Tableviews}
 \end{figure}
 
 {\itshape QListView}, {\itshape QTableView} und {\itshape QTreeView} sind die äquivalenten
 Model/View Komponenten zu den klassischen Item Views. Diese Komponenten bieten eine
 einfache und saubere, Komponenten-orientierte Art die Datenmengen zu verwalten.
 
-\section{Qt`s Model/View Framework}
+\section{Das Model/View Framework}
 Das Model/View Framework, welches von Qt bereitgestellt wird, ist eine Variante des
 Model-View-Controller-Konzeptes, welche speziell für Qt`s Item Views angepasst wurde.
 Dabei werden Models verwendet, um Daten anderen Komponenten zur Verfügung zu stellen,
@@ -299,21 +300,90 @@ bietet eine ganze Reihe von Vorteilen gegenüber den klassischen Item Views:
 \begin{itemize}
 \item Durch die Verwendung eines Standard-Interface für den Datenzugriff der Models,
 können diese separat von anderen Komponenten entwickelt und bei Bedarf ersetzt werden.
-\item Daten welche über Models erhalten werden, können zwischen mehreren Views geteilt werden.
-Dadurch wird es der Anwendung ermöglicht, mehrere Views der selben Daten anzubieten und diese
-kann so verschiedenste Darstellungsformen der Daten anbieten.
+\item Daten, welche über Models erhalten werden, können zwischen mehreren Views geteilt werden.
+Dadurch wird es der Anwendung ermöglicht, verschiedenste Darstellungsformen der selben Daten
+durch mehrere Views anzubieten.
 \item Markierte Daten können zwischen den Views geteilt oder getrennt verwaltet werden, je
 nachdem was vom Anwender gewünscht wird.
-\item Für die Standard-Views List, Tree und Table, wird das meiste des Rendering Vorganges von
+\item Für die Standard-Views List, Tree und Table, wird das meiste des Renderingvorganges von
 Delegates ausgeführt. Das erleichtert das Anpassen der Views für die meisten Zwecke, ohne
 viel neuen Code zu schreiben.
 \item Durch die Verwendung von {\itshape Proxy Models} können Daten, die von Models angeboten
 werden, transformiert werden, bevor sie der View zur Verfügung gestellt werden. Dies ermöglicht
-es, Sortierung und Filterung der Anwendung hinzuzufügen, die zwischen mehreren Views verwendet
+es Sortierung und Filterung der Anwendung hinzuzufügen, die zwischen mehreren Views verwendet
 werden kann.
 \end{itemize}
 
+\section{Die Model/View Architektur}
+Die Model/View Architektur resultiert aus der Kombination der View und des Controllers,
+des Model-View-Controller-Konzeptes, in einer Komponente. Dies trennt immer noch die
+Datenhaltung von der Art ihrer Präsentation, aber ermöglicht einen Framework basierten
+Ansatz auf der selben Grundlage. Um flexibel auf Benutzereingaben zu reagieren, wird das
+Konzept der {\itshape Delegates} eingeführt. Der Vorteil bei der Verwendung von Delegates
+in diesem Framework besteht darin, dass es erlaubt, die Art und Weise des Renderings und Editieren
+von Daten individuell anzupassen.{\medskip}
+
+\begin{figure}[h]
+\begin{center}
+\fbox{\includegraphics[width=5cm]{modelview-overview.png}}
+\caption{Die Model/View Architektur}
+\end{center}
+\end{figure}
+
+\begin{description}
+\item[Model]
+Das Model kommuniziert mit einer Datenquelle und bietet ein Interface für den Zugriff
+der anderen Komponenten an. Die Art der Kommunikation\footnote{zwischen Model und
+Datenquelle} hängt von der Art der verwendeten Datenquelle ab.
+\item[View]
+Die View bekommt {\itshape Model-Indizies} vom Model, welche die Daten-Items referenzieren.
+Übergibt die View dem Model Model-Indizies, so erhält sie die Daten-Items von der Datenquelle.
+\item[Delegate]
+In Standardviews rendert ein Delegate die Daten-Items. Wird ein Item bearbeitet,
+kommuniziert das Delegate direkt mit dem Model über den Model-Index.
+\end{description}
+
+Generell kann man die Model/View-Klassen in diese drei, wie oben beschrieben, Gruppen
+einteilen: Models, Views und Delegates. Jede dieser Komponenten wird von {\itshape abstrakten
+Klassen} definiert, welche die gemeinsamen Interfaces anbieten und manchen Fällen die
+standardmäßige Implementierung von Features.
+
+Model, Views und Delegates kommunizieren miteinander unter der Verwendung von 
+{\itshape Signals} und {\itshape Slots}\footnote{Der Signal und Slot Mechanismus 
+ist im Qt Framework für die Kommunikation zwischen Objekten zuständig}:
+\begin{itemize}
+\item Signals vom Model informieren die View über Änderungen der Daten in der Datenquelle
+\item Signals von der View bieten Informationen über die Benutzeraktion auf den angezeigten
+Daten-Items
+\item Signals vom Delegate werden während der Dateneditierung verwendet, um Model und
+View über den Status der Editierung zu informieren
+\end{itemize}
+
+\subsection{Models}
+Alle Item-Models basieren auf der {\itshape QAbstractItemModel} Klasse. Diese definiert ein
+Interface, über welches von Views und Delegates aus auf die Daten zugegriffen werden kann.
+Die Daten selbst müssen nicht innerhalb des Models gespeichert werden. Sie werden über andere
+Datenstrukturen oder Quellen verwaltet, einer Datei, eine Datenbank oder irgendetwas anderes.
+
+\subsection{Views}
+Vollständige Implementierungen werden für die Views {\itshape QListView}, {\itshape QTableView} und
+{\itshape QTreeView} zur Verfügung gestellt. Jede dieser Klassen basiert auf der abstrakten
+Basisklasse {\itshape QAbstractItemView}. Obwohl diese Klassen schon fertig zur Benutzung sind,
+können sie weiter angepasst werden.
+
+\subsection{Delegates}
+{\itshape QAbstractItemDelegate} ist die abstrakte Basisklasse für Delegates im Model/View
+Framework. Eine Standardimplementierung wird von {\itshape QStyledItemDelegate} angeboten und
+diese wird von den Qt-Standardviews verwendet.
+
+\subsection{Sortieren}
+Es gibt einen alternativen Ansatz um Daten in der Model/View Architektur zu sortieren. Bietet
+ein Model keine standardmäßigen Interfaces für Sortierung an\footnote{um beispielsweise Listen
+zu sortieren, \dots}, kann man mit der Hilfe von {\itshape Proxy Models} die Struktur der Daten
+des Models vor ihrer Darstellung in der View transformieren.
+
 \newpage
+% "leeres" Zitieren um alle Angabe aus dem Literaturverzeichnis als Quellen auszugeben
 \nocite{*}
 \addcontentsline{toc}{chapter}{Literaturverzeichnis}
 \bibliography{mvc-literatur}{}
