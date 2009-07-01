@@ -2,6 +2,14 @@
 
 \usenavigationsymbolstemplate{}
 
+\setbeamertemplate{footline}{%
+\begin{beamercolorbox}[wd=\paperwidth,ht=2.25ex,dp=1ex]{date in head/foot}%
+\hspace*{1ex} 
+\insertframenumber{} / \inserttotalframenumber
+\end{beamercolorbox}
+}%
+
+
 \newcommand{\sectionframe}[1]
 {
 \section{#1}
