@@ -1,6 +1,92 @@
 \begin{frame}
-    \frametitle{My Title}
+  \frametitle{Darstellung des Model-View-Controller- Konzeptes}
+  \begin{itemize}
+    \item Welche Art der Applikation?
     \begin{itemize}
-        \item foobar
+      \item Fahrplan- Applikation?
+      \begin{itemize}
+        \item Anzeige des Zugfahrplans gesamt
+        \item Anzeige des Fahrplans an bestimmter Haltestelle
+        \item \textit{Gab es schon...}
+      \end{itemize}
+      \item Kinoinformation?
+      \begin{itemize}
+        \item Anzeige der aktuell laufenden Filme
+        \item Anzeige der demn\"achst laufenden Filme
+      \end{itemize}
+      \item Wetterinformation? \textbf{weatherinfo}
     \end{itemize}
+  \end{itemize}
+\end{frame}
+\begin{frame}
+  \frametitle{Anforderungen an die Beispielapplikation}
+  \begin{itemize}
+    \item Welche Wetterdaten sollen dargestellt werden, f\"ur welchen Zeitraum und f\"ur welche St\"adte? \textbf{Model}
+    \item Welche Anzeigearten wollen wir implementieren? \textbf{View}
+    \item Welche Funktionalit\"aten in den Views sollen implementiert werden? \textit{Controller}
+  \end{itemize}
+\end{frame}
+\begin{frame}
+  \frametitle{Das Model}
+  \begin{itemize}
+    \item Was ist als Wetterinformation sinnvoll?
+    \begin{itemize}
+      \item Temperatur
+      \item Bew\"olkung
+      \item Windst\"arke
+      \item Windrichtung
+    \end{itemize}
+    \item Ein Zeitraum von 5 Tagen (\textit{l\"angere Vorhersagen grenzen an Wahrsagerei})
+    \item Welche St\"adte und welche Zusatzinformationen?
+    \begin{itemize}
+      \item Dresden,Oslo,Springfield,...
+      \item Weltkoordinaten (L\"angen- und Breitengrad) f\"ur die Ortsbestimmung
+    \end{itemize}
+  \end{itemize}
+\end{frame}
+\begin{frame}
+  \frametitle{Die Views}
+  \begin{itemize}
+    \item Welche Views?
+    \begin{itemize}
+      \item Verlaufskurve der Temperatur: \textbf{temperature\underline{ }view}
+      \item Wetterinformationen f\"ur eine bestimmte Stadt: \textbf{day\underline{ }view}
+      \item Anzeige der Temperatur und Bew\"olkung in Tabellenform: \textbf{table\underline{ }view}
+      \item Anzeige der Bew\"olkung auf einer Weltkarte: \textbf{world\underline{ }view}
+    \end{itemize}
+    \item Design der Oberfl\"achen der Views
+    \begin{itemize}
+      \item per Handzeichnung im ersten Schritt diskutiert und definiert
+      \item nachfolgend dann von Implementierer durch das Framework realisiert
+    \end{itemize}
+  \end{itemize}
+\end{frame}
+\begin{frame}
+  \frametitle{Die Funktionalit\"at der Views}
+  \begin{itemize}
+    \item \textbf{temperature\underline{ }view}
+    \begin{itemize}
+      \item Auswahl der Stadt
+    \end{itemize}
+    \item \textbf{day\underline{ }view}
+    \begin{itemize}
+      \item Auswahl der Stadt
+      \item Auswahl des angezeigten Tages
+    \end{itemize}
+    \item \textbf{table\underline{ }view}
+    \begin{itemize}
+      \item Einschr\"ankung der angezeigten St\"adte durch einen Filter
+      \begin{itemize}
+        \item Filter soll case-insensitive sein
+      \end{itemize}
+      \item \"Anderung der Temperatur f\"ur eine Stadt und einen Tag
+      \begin{itemize}
+        \item Temperatureintrag soll editierbar werden nach einem Doppelklick
+      \end{itemize}
+    \end{itemize}
+    \item \textbf{world\underline{ }view}
+    \begin{itemize}
+      \item Auswahl des angezeigten Tages
+    \end{itemize}
+  \end{itemize}
 \end{frame}
