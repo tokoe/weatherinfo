@@ -1,17 +1,17 @@
 \begin{frame}
 	\frametitle{Allgemeine Betrachtungen}
-	\framesubtitle{zu graphischen Bedienoberflächen}
+	\framesubtitle{Zu graphischen Bedienoberflächen}
 	\begin{itemize}
-		\item interaktiv, nutzerfreundlich und komfortabel
-		\item haben sich in Software-Systemen durchgesetzt
-		\item heutige Akzeptanz und Verbreitung zeigt
+		\item Interaktiv, nutzerfreundlich und komfortabel
+		\item Haben sich in Software-Systemen durchgesetzt
+		\item Heutige Akzeptanz und Verbreitung zeigt
 		\begin{itemize}
-			\item wichtiger Bestandteil von Anwendungssystemen
-			\item interaktive SW-Systeme haben sehr hohen Stellenwert
+			\item Wichtiger Bestandteil von Anwendungssystemen
+			\item Interaktive SW-Systeme haben sehr hohen Stellenwert
 		\end{itemize}
 		\item Architekturmuster {\bf MVC}
 		\begin{itemize}
-			\item grundlegende strukturelle Organisation
+			\item Grundlegende strukturelle Organisation
 			\item Unabhängigkeit des funktionalen Teils von
 			der Bedienschnittstelle
 		\end{itemize}
@@ -20,32 +20,32 @@
 
 \begin{frame}
 	\frametitle{Das MVC Muster}
-	\framesubtitle{die Komponenten}
+	\framesubtitle{Die Komponenten}
 	\begin{center}
 		Teilt eine interaktive Anwendung in 3 Komponenten auf.
 	\end{center}
 	\begin{itemize}
 		\item {\bf Model}
 		\begin{itemize}
-			\item enthält die gesamte Daten, Zustands- und Anwendungslogik
+			\item Enthält die gesamte Daten, Zustands- und Anwendungslogik
 			\item Zustandsänderung über Schnittstelle
 			\item Benachrichtigungen über Änderungen an Beobachter
 		\end{itemize}
 		\item {\bf View}
 		\begin{itemize}
 			\item Bildschirmrepräsentation des Anwendungsobjektes
-			\item erhält Zustand und Daten direkt vom Model
+			\item Erhält Zustand und Daten direkt vom Model
 		\end{itemize}
 		\item {\bf Controller}
 		\begin{itemize}
-			\item nimmt Eingaben des Nutzers entgegen und verarbeitet sie
+			\item Nimmt Eingaben des Nutzers entgegen und verarbeitet sie
 		\end{itemize}
 	\end{itemize}
 \end{frame}
 
 \begin{frame}
 	\frametitle{Das MVC Muster}
-	\framesubtitle{die Komponenten}
+	\framesubtitle{Die Komponenten}
 	\begin{center}
 		\includegraphics[trim = 0mm 207.7mm 28.6mm 0mm, clip, width=9cm]{../mvc/mvc-schema.pdf}
 	\end{center}
@@ -85,7 +85,7 @@
 	\frametitle{MVC etwas genauer betrachtet}
 	\framesubtitle{Das Observer-Muster als Klassendiagramm}
 	\begin{center}
-		\includegraphics[trim = 18mm 155mm 22mm 45mm, clip, width=9cm]{../mvc/observer-kd.pdf}
+		\includegraphics[trim = 18mm 155mm 22mm 45mm, clip, width=8cm]{../mvc/observer-kd.pdf}
 	\end{center}	
 	\begin{itemize}
 		\item Beobachter registriert sich beim Subjekt
@@ -104,7 +104,7 @@
 	\begin{itemize}
 		\item View ist mit einer Strategie konfiguriert
 		\item Controller ist das Verhalten der View
-		\item kann ausgetauscht werden
+		\item Kann ausgetauscht werden
 		\item View delegiert Benutzeraktionen an den Controller
 	\end{itemize}
 \end{frame}
@@ -119,20 +119,20 @@
 		Die GUI ist ein Kompositum.
 	\end{center}
 	\begin{itemize}
-		\item besteht Label, Buttons, Texteingabefelder, \dots
+		\item Besteht aus Label, Buttons, Texteingabefelder, \dots
 		\item Komponenten enthalten andere Komponenten
-		\item wird intern verwendet um Bestandteile der Anzeige zu verwalten
+		\item Wird intern verwendet um Bestandteile der Anzeige zu verwalten
 	\end{itemize}
 \end{frame}
 
 
 \begin{frame}
 	\frametitle{Nachteile von MVC}
-	\framesubtitle{in bestimmten Fällen}
+	\framesubtitle{In bestimmten Fällen}
 	\begin{itemize}
-		\item größere Komplexität der Anwendung ohne Zugewinn an Flexibilität
+		\item Größere Komplexität der Anwendung ohne Zugewinn an Flexibilität
 		\item Potential für eine übermäßige Anzahl von Aktualisierungen
-		\item enge Verbindung zwischen View- und Controllerkomponenten
+		\item Enge Verbindung zwischen View- und Controllerkomponenten
 	\end{itemize}
 \end{frame}
 
@@ -140,17 +140,17 @@
 	\frametitle{Framework}
 	\framesubtitle{Ein kurzer Überblick}
 	\begin{itemize}
-		\item besteht aus einer Menge von zusammenarbeitenden Klassen
+		\item Besteht aus einer Menge von zusammenarbeitenden Klassen
 		\item Wiederverwendbarkeit für den Entwurf einer bestimmten Klasse
 		von Software
-		\item definiert
+		\item Definiert:
 		\begin{itemize}
-			\item die Struktur im Großen
+			\item Die Struktur im Großen
 			\item Unterteilung in Klassen und Objekte
-			\item die jeweiligen zentralen Zuständigkeiten
+			\item Die jeweiligen zentralen Zuständigkeiten
 			\item Zusammenarbeit und Kontrollfluß
 		\end{itemize}
-		\item legt Entwursparameter im voraus fest
+		\item Legt Entwursparameter im voraus fest
 		\item Komponenten beinhalten Erfahrungen und sind erprobt
 	\end{itemize}
 \end{frame}
@@ -159,9 +159,9 @@
 	\frametitle{Model/View Programmierung mit dem Qt Framework}
 	\framesubtitle{Was ist Qt?}
 	\begin{itemize}
-		\item de facto Standard C++ Framework für die Entwicklung
+		\item De facto Standard C++ Framework für die Entwicklung
 		von Cross-Platform-Software
-		\item enthält Widgets mit Standard GUI-Funktionalität
+		\item Enthält Widgets mit Standard GUI-Funktionalität
 		\item Open Source Edition ist Grundlage von KDE
 	\end{itemize}
 \end{frame}
@@ -175,7 +175,7 @@
 	\begin{itemize}
 		\item Item-View-Widgets sind Standard GUI-Bedienungselemente
 		\item List-, Tree-, Table-Views
-		\item äquivalente Model/View Komponenten
+		\item \"Aquivalente Model/View Komponenten
 		\begin{itemize}
 			\item {\itshape QListView}
 			\item {\itshape QTableView}
@@ -186,24 +186,13 @@
 
 \begin{frame}
 	\frametitle{Model/View Programmierung mit Qt}
-	\framesubtitle{Die Model/View Architektur}
-	\begin{itemize}
-		\item Variante des MVC speziell angepaßt für Qt`s Item Views
-		\item verwendet Models um Daten anderen Komponenten zur Verfügung zu stellen
-		\item Views präsentieren Daten
-		\item Delegates behandeln Rendering- und Bearbeitungsprozesse
-	\end{itemize}
-\end{frame}
-
-\begin{frame}
-	\frametitle{Model/View Programmierung mit Qt}
 	\framesubtitle{Das Model/View Framework}
 	\begin{itemize}
 		\item Variante des MVC speziell angepaßt für Qt`s Item Views
-		\item verwendet Models um Daten anderen Komponenten zur Verfügung zu stellen
+		\item Verwendet Models um Daten anderen Komponenten zur Verfügung zu stellen
 		\item Views präsentieren Daten
 		\item Delegates behandeln Rendering- und Bearbeitungsprozesse
-		\item ermöglicht eine ganze Reihe Vorteile gegenüber den klassischen ItemViews
+		\item Ermöglicht eine ganze Reihe Vorteile gegenüber den klassischen ItemViews
 	\end{itemize}
 \end{frame}
 
@@ -214,9 +203,9 @@
 		\includegraphics[width=3cm]{../mvc/modelview-overview.png}
 	\end{center}
 	\begin{itemize}
-		\item resultiert aus der Kombination von View und Controller in einer Komponente
-		\item dies ermöglicht einen Framework basierten Ansatz auf der Grundlage des MVC
-		\item mit Delegates kann man individuell auf Benutzereingaben reagieren
+		\item Resultiert aus der Kombination von View und Controller in einer Komponente
+		\item Dies ermöglicht einen Framework basierten Ansatz auf der Grundlage des MVC
+		\item Mit Delegates kann man individuell auf Benutzereingaben reagieren
 	\end{itemize}
 	\begin{center}
 		{\small Mit {\itshape Proxy Models} können Daten von Models transformiert werden.\\
@@ -224,25 +213,24 @@
 	\end{center}
 \end{frame}
 
-
 \begin{frame}
 	\frametitle{Model/View Programmierung mit Qt}
 	\framesubtitle{Die Model/View Architektur}
 	\begin{itemize}
 		\item {\bf Model}
 		\begin{itemize}
-			\item kommuniziert mit Datenquelle
-			\item bietet Standardinterface für Zugriff der anderen Komponenten
+			\item Kommuniziert mit Datenquelle
+			\item Bietet Standardinterface für Zugriff der anderen Komponenten
 		\end{itemize}
 		\item {\bf View}
 		\begin{itemize}
-			\item bekommt Model-Indizies vom Model
-			\item diese referenzieren Daten-Items
+			\item Bekommt Model-Indizies vom Model
+			\item Diese referenzieren Daten-Items
 		\end{itemize}
 		\item {\bf Delegate}
 		\begin{itemize}
-			\item rendert die Daten-Items in View
-			\item wird Item bearbeitet werden ebenfalls Model-Indizies verwendet
+			\item Rendert die Daten-Items in View
+			\item Wird Item bearbeitet werden ebenfalls Model-Indizies verwendet
 		\end{itemize} 
 	\end{itemize}
 	\begin{center}
@@ -267,7 +255,7 @@
 
 \begin{frame}
 	\frametitle{Model/View Programmierung mit Qt}
-	\framesubtitle{weitere Informationen im Internet}
+	\framesubtitle{Weitere Informationen im Internet}
 	\begin{center}
 		{\Large \bf http://www.qtsoftware.com}
 	\end{center}
